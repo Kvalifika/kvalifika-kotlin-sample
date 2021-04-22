@@ -43,6 +43,8 @@ dependencies {
 ```kotlin
 import com.kvalifika.sdk.KvalifikaSDK
 import com.kvalifika.sdk.KvalifikaSDKLocale
+import com.kvalifika.sdk.KvalifikaSDKCallback
+import com.kvalifika.sdk.KvalifikaSDKError
 ```
 After that you need to initialize SDK with **your appId and secretKey**.
 
