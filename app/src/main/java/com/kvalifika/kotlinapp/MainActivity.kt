@@ -21,12 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         sdk = KvalifikaSDK.Builder(this, appId, secretKey)
-//            .logo(R.drawable.logo)
-//            .documentIcon(R.drawable.logo)
                 .locale(KvalifikaSDKLocale.GE)
-//                .activeFlashIcon(R.drawable.flash_on)
-//                .inactiveFlashIcon(R.drawable.flash_off)
-//                .cancelIcon(R.drawable.cancel_icon)
                 .build()
 
         sdk!!.callback(object : KvalifikaSDKCallback {
@@ -44,44 +39,42 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onError(error: KvalifikaSDKError) {
-                if(error == KvalifikaSDKError.USER_CANCELLED) {
+                if (error == KvalifikaSDKError.USER_CANCELLED) {
                     Toast.makeText(applicationContext, "User cancelled", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.TIMEOUT) {
+                if (error == KvalifikaSDKError.TIMEOUT) {
                     Toast.makeText(applicationContext, "Timeout", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.SESSION_UNSUCCESSFUL) {
+                if (error == KvalifikaSDKError.SESSION_UNSUCCESSFUL) {
                     Toast.makeText(applicationContext, "Session failed", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.ID_UNSUCCESSFUL) {
+                if (error == KvalifikaSDKError.ID_UNSUCCESSFUL) {
                     Toast.makeText(applicationContext, "ID scan failed", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.CAMERA_PERMISSION_DENIED) {
+                if (error == KvalifikaSDKError.CAMERA_PERMISSION_DENIED) {
                     Toast.makeText(applicationContext, "Camera permission denied", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.LANDSCAPE_MODE_NOT_ALLOWED) {
+                if (error == KvalifikaSDKError.LANDSCAPE_MODE_NOT_ALLOWED) {
                     Toast.makeText(applicationContext, "Landscape mode is not allowed", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.REVERSE_PORTRAIT_NOT_ALLOWED) {
+                if (error == KvalifikaSDKError.REVERSE_PORTRAIT_NOT_ALLOWED) {
                     Toast.makeText(applicationContext, "Reverse portrait is not allowed", Toast.LENGTH_LONG).show()
                 }
 
-                if(error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
+                if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
                     Toast.makeText(applicationContext, "Unknown error happened", Toast.LENGTH_LONG).show()
                 }
             }
         })
     }
 
-
-    // Perform Photo ID Match, generating a username each time to guarantee uniqueness.
-    fun onPhotoIDMatchPressed(view: View?) {
+    fun onVerificationPress(view: View?) {
         sdk?.startSession()
     }
 }

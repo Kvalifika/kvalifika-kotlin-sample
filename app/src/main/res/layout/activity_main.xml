@@ -14,7 +14,7 @@
         android:fontFamily="sans-serif"
         android:text="@string/start_check"
         android:gravity="center"
-        android:onClick="onPhotoIDMatchPressed"
+        android:onClick="onVerificationPress"
         android:textAllCaps="false"
         android:textSize="18sp" />
 
