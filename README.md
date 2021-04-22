@@ -20,7 +20,7 @@ Please use `minSdkVersion` `21`  in your `build.gradle (Module)` file
 
 &nbsp;
 Add following to project's main `build.gradle` file
-```
+```groovy
 allprojects {
     repositories {
         // Existing repositories, like google() and jcenter()
@@ -31,7 +31,7 @@ allprojects {
 &nbsp;
 To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 
-```
+```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
   implementation 'com.kvalifika:sdk:0.0.4'
