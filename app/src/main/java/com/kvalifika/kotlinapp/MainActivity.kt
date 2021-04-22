@@ -45,35 +45,30 @@ class MainActivity : AppCompatActivity() {
 
             override fun onError(error: KvalifikaSDKError) {
                 if(error == KvalifikaSDKError.USER_CANCELLED) {
-                    Log.d("MainActivity", "user cancelled error")
                     Toast.makeText(applicationContext, "User cancelled", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.TIMEOUT) {
-                    Log.d("MainActivity", "timeout")
                     Toast.makeText(applicationContext, "Timeout", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.SESSION_UNSUCCESSFUL) {
-                    Log.d("MainActivity", "session failed")
+                    Toast.makeText(applicationContext, "Session failed", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.ID_UNSUCCESSFUL) {
-                    Log.d("MainActivity", "Id scan failed")
+                    Toast.makeText(applicationContext, "ID scan failed", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.CAMERA_PERMISSION_DENIED) {
-                    Log.d("MainActivity", "camera permission denied")
                     Toast.makeText(applicationContext, "Camera permission denied", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.LANDSCAPE_MODE_NOT_ALLOWED) {
-                    Log.d("MainActivity", "Landscape mode is not allowed")
                     Toast.makeText(applicationContext, "Landscape mode is not allowed", Toast.LENGTH_LONG).show()
                 }
 
                 if(error == KvalifikaSDKError.REVERSE_PORTRAIT_NOT_ALLOWED) {
-                    Log.d("MainActivity", "reverse portrait not allowed")
                     Toast.makeText(applicationContext, "Reverse portrait is not allowed", Toast.LENGTH_LONG).show()
                 }
 
