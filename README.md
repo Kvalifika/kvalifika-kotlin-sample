@@ -181,13 +181,13 @@ Provide drawable resources.
 
 ```kotlin
 sdk = KvalifikaSDK.Builder(this, appId, secretKey)
-        .locale(KvalifikaSDKLocale.EN)
+	.locale(KvalifikaSDKLocale.EN)
 	.logo(R.drawable.logo)
 	.documentIcon(R.drawable.document_icon)
 	.activeFlashIcon(R.drawable.flash_on)
 	.inactiveFlashIcon(R.drawable_flash_off)
 	.cancelIcon(R.drawable.cancel_icon)
-        .build()
+	.build()
 ```
 
 &nbsp;
