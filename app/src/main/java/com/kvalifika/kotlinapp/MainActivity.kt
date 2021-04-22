@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish(sessionData: String) {
-                val response = JSONObject(sessionData)
-                Log.d("MainActivity", sessionData)
+                Log.d("MainActivity", "finished")
             }
 
             override fun onError(error: KvalifikaSDKError) {
