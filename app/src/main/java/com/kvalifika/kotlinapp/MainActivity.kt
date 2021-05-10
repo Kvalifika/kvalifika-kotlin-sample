@@ -14,13 +14,12 @@ import org.json.JSONObject
 class MainActivity : AppCompatActivity() {
     private var sdk: KvalifikaSDK? = null
     private val appId: String = ""
-    private val secretKey: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sdk = KvalifikaSDK.Builder(this, appId, secretKey)
+        sdk = KvalifikaSDK.Builder(this, appId)
                 .locale(KvalifikaSDKLocale.GE)
                 .build()
 
@@ -29,15 +28,19 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MainActivity", "initialized")
             }
 
-            override fun onStart() {
+            override fun onStart(sessionId: String) {
                 Log.d("MainActivity", "started")
             }
 
-            override fun onFinish(sessionData: String) {
+            override fun onFinish(sessionId: String) {
                 Log.d("MainActivity", "finished")
             }
 
-            override fun onError(error: KvalifikaSDKError) {
+            override fun onError(error: KvalifikaSDKError, message: String?) {
+                if (error == KvalifikaSDKError.INVALID_APP_ID) {
+                    Log.d("MainActivity", "Invalid App ID")
+                }
+
                 if (error == KvalifikaSDKError.USER_CANCELLED) {
                     Toast.makeText(applicationContext, "User cancelled", Toast.LENGTH_LONG).show()
                 }
@@ -66,8 +69,20 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Reverse portrait is not allowed", Toast.LENGTH_LONG).show()
                 }
 
+                if (error == KvalifikaSDKError.FACE_IMAGES_UPLOAD_FAILED) {
+                    Toast.makeText(applicationContext, "Could not upload face images", Toast.LENGTH_LONG).show()
+                }
+
+                if (error == KvalifikaSDKError.DOCUMENT_IMAGES_UPLOAD_FAILED) {
+                    Toast.makeText(applicationContext, "Could not upload Id card or passport images", Toast.LENGTH_LONG).show()
+                }
+
+                if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
+                    Toast.makeText(applicationContext, "Could not compare images", Toast.LENGTH_LONG).show()
+                }
+
                 if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
-                    Toast.makeText(applicationContext, "Unknown error happened", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Unknown error happened: $message", Toast.LENGTH_LONG).show()
                 }
             }
         })
