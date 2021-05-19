@@ -12,8 +12,8 @@ import com.kvalifika.sdk.KvalifikaSDKLocale
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
-    private var sdk: KvalifikaSDK? = null
-    private val appId: String = ""
+    private lateinit var sdk: KvalifikaSDK
+    private val appId: String = "YOUR APP ID"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +23,11 @@ class MainActivity : AppCompatActivity() {
                 .locale(KvalifikaSDKLocale.GE)
                 .build()
 
-        sdk!!.callback(object : KvalifikaSDKCallback {
+        sdk.callback(object : KvalifikaSDKCallback {
             override fun onInitialize() {
-                Log.d("MainActivity", "initialized")
+                runOnUiThread {
+                    Toast.makeText(applicationContext, "Initialized", Toast.LENGTH_LONG).show()
+                }
             }
 
             override fun onStart(sessionId: String) {
@@ -38,7 +40,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onError(error: KvalifikaSDKError, message: String?) {
                 if (error == KvalifikaSDKError.INVALID_APP_ID) {
-                    Log.d("MainActivity", "Invalid App ID")
+                    runOnUiThread {
+                        Toast.makeText(applicationContext, "Invalid App ID", Toast.LENGTH_LONG).show()
+                    }
                 }
 
                 if (error == KvalifikaSDKError.USER_CANCELLED) {
@@ -89,6 +93,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onVerificationPress(view: View?) {
-        sdk?.startSession()
+        sdk.startSession()
     }
 }

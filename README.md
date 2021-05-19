@@ -35,7 +35,7 @@ To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 ```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
-  implementation 'com.kvalifika:sdk:0.1.0'
+  implementation 'com.kvalifika:sdk:0.3.0'
 }
 ```
 &nbsp;
@@ -51,7 +51,7 @@ After that you need to initialize SDK with **your appId and secretKey**.
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
-	 private var sdk: KvalifikaSDK? = null
+	 private lateinit var sdk: KvalifikaSDK
  	 private val appId: String = "YOUR APP ID"
 
 	 override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +72,7 @@ Call `sdk.startSession()` on button click event
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
-	 private var sdk: KvalifikaSDK? = null
+	 private lateinit var sdk: KvalifikaSDK
  	 private val appId: String = "YOUR APP ID"
 
 	 override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
 	 // Start verification on button click
 	 fun onVerificationPress(view: View?) {
-			sdk?.startSession()
+			sdk.startSession()
 	 }
 }
 
@@ -178,6 +178,7 @@ sdk.callback(object : KvalifikaSDKCallback {
 ### Error Codes
 | Error Code | Description |
 |---------------------|--------------------------|
+| INVALID_APP_ID        | Kvalifika App Id is incorrect |
 | USER_CANCELLED        | User cancelled before completing verification. |
 | TIMEOUT        | Cancelled due to inactivity. |
 | SESSION_UNSUCCESSFUL        | The Session was not performed successfully |
