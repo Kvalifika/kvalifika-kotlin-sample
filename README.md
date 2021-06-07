@@ -35,7 +35,7 @@ To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 ```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
-  implementation 'com.kvalifika:sdk:0.3.0'
+  implementation 'com.kvalifika:sdk:0.4.0'
 }
 ```
 &nbsp;
