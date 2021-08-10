@@ -81,10 +81,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Could not upload Id card or passport images", Toast.LENGTH_LONG).show()
                 }
 
-                if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
-                    Toast.makeText(applicationContext, "Could not compare images", Toast.LENGTH_LONG).show()
-                }
-
                 if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
                     Toast.makeText(applicationContext, "Unknown error happened: $message", Toast.LENGTH_LONG).show()
                 }

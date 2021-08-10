@@ -35,7 +35,7 @@ To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 ```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
-  implementation 'com.kvalifika:sdk:0.5.1'
+  implementation 'com.kvalifika:sdk:0.5.2'
 }
 ```
 &nbsp;
@@ -162,10 +162,6 @@ sdk.callback(object : KvalifikaSDKCallback {
             Toast.makeText(applicationContext, "Could not upload Id card or passport images", Toast.LENGTH_LONG).show()
         }
 
-        if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
-            Toast.makeText(applicationContext, "Could not compare images", Toast.LENGTH_LONG).show()
-        }
-
         if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
             Toast.makeText(applicationContext, "Unknown error happened", Toast.LENGTH_LONG).show()
         }
@@ -188,7 +184,6 @@ sdk.callback(object : KvalifikaSDKCallback {
 | REVERSE_PORTRAIT_NOT_ALLOWED        | Verification cancelled because device is in reverse portrait mode. |
 | FACE_IMAGES_UPLOAD_FAILED        | Could not upload face images. Internal request failed. |
 | DOCUMENT_IMAGES_UPLOAD_FAILED        | Could not upload ID card or passport images. Internal request failed. |
-| COMPARE_IMAGES_FAILED        | Could not compare images. Internal request failed. |
 | UNKNOWN_INTERNAL_ERROR        | Session failed because of an unhandled internal error. |
 
 &nbsp;
