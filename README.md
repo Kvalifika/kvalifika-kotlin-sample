@@ -12,6 +12,7 @@ Table of content:
 - [UI Customizations](#ui-customizations)
 	- [Appearance](#appearance)
 	- [Language](#language)
+- [Development Mode](#development-mode)
 - [ProGuard](#proguard)
 
 
@@ -47,7 +48,7 @@ import com.kvalifika.sdk.KvalifikaSDKLocale
 import com.kvalifika.sdk.KvalifikaSDKCallback
 import com.kvalifika.sdk.KvalifikaSDKError
 ```
-After that you need to initialize SDK with **your appId and secretKey**.
+After that you need to initialize SDK with **your appId**.
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
@@ -194,7 +195,7 @@ You can customize logo and icons.
 Provide drawable resources.
 
 ```kotlin
-sdk = KvalifikaSDK.Builder(this, appId, secretKey)
+sdk = KvalifikaSDK.Builder(this, appId)
 	.locale(KvalifikaSDKLocale.EN)
 	.logo(R.drawable.logo)
 	.documentIcon(R.drawable.document_icon)
@@ -216,12 +217,26 @@ Supported locales are:
 
 
 ```kotlin
-sdk = KvalifikaSDK.Builder(this, appId, secretKey)
+sdk = KvalifikaSDK.Builder(this, appId)
         .locale(KvalifikaSDKLocale.EN)
         .build()
 ```
 
 &nbsp;
+
+### Development Mode
+Without specifying mode SDK uses [https://api.kvalifika.com](https://api.kvalifika.com)
+
+With development mode ON SDK uses [https://apistaging.kvalifika.com](https://apistaging.kvalifika.com)
+
+```java
+sdk = KvalifikaSDK.Builder(this, appId)
+        .development(true)
+        .build()
+```
+
+&nbsp;
+
 ### ProGuard
 If you are using ProGuard in release build add following options:
 ```
