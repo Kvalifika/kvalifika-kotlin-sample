@@ -162,6 +162,10 @@ sdk.callback(object : KvalifikaSDKCallback {
         if (error == KvalifikaSDKError.DOCUMENT_IMAGES_UPLOAD_FAILED) {
             Toast.makeText(applicationContext, "Could not upload Id card or passport images", Toast.LENGTH_LONG).show()
         }
+	
+	if (error == KvalifikaSDKError.NO_MORE_ATTEMPTS) {
+            Toast.makeText(applicationContext, "You have reached maximum attempts", Toast.LENGTH_LONG).show()
+        }
 
         if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
             Toast.makeText(applicationContext, "Unknown error happened", Toast.LENGTH_LONG).show()
@@ -185,6 +189,7 @@ sdk.callback(object : KvalifikaSDKCallback {
 | REVERSE_PORTRAIT_NOT_ALLOWED        | Verification cancelled because device is in reverse portrait mode. |
 | FACE_IMAGES_UPLOAD_FAILED        | Could not upload face images. Internal request failed. |
 | DOCUMENT_IMAGES_UPLOAD_FAILED        | Could not upload ID card or passport images. Internal request failed. |
+| NO_MORE_ATTEMPTS | User has reached maximum limit of attempts                    |
 | UNKNOWN_INTERNAL_ERROR        | Session failed because of an unhandled internal error. |
 
 &nbsp;
@@ -214,6 +219,8 @@ Supported locales are:
 |---------------------|--------------------------|
 | EN        | English |
 | GE        | Georgian |
+| RU   | Russian |
+| SP   | Spanish |
 
 
 ```kotlin
