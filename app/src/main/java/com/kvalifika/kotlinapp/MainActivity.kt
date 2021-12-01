@@ -37,6 +37,19 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFinish(sessionId: String) {
                 Log.d("MainActivity", "finished")
+
+                // Alert with session id
+                Toast.makeText(
+                    applicationContext,
+                    "Verification finished with session id $sessionId", Toast.LENGTH_LONG
+                ).show()
+
+                // Go back to Main Activity
+                runOnUiThread {
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                }
             }
 
             override fun onError(error: KvalifikaSDKError, message: String?) {
