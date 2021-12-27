@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val appId = "YOUR APP ID"
+        val appId = "APP ID"
         sdk = KvalifikaSDK.Builder(this, appId)
             .locale(KvalifikaSDKLocale.GE)
             .development(true)
