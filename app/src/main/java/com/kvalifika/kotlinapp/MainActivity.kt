@@ -2,7 +2,6 @@ package com.kvalifika.kotlinapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,11 +31,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onStart(sessionId: String) {
-                Log.d("MainActivity", "started")
             }
 
             override fun onFinish(sessionId: String) {
-                Log.d("MainActivity", "finished")
 
                 // Alert with session id
                 Toast.makeText(
@@ -147,11 +144,21 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+
+                if(error == KvalifikaSDKError.USER_BLOCKED){
+                    runOnUiThread {
+                        Toast.makeText(
+                            applicationContext,
+                            "The number of attempts has expired. User blocked for 5 minutes.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
             }
         })
     }
 
     fun onVerificationPress(view: View?) {
-        sdk.startSession()
+        sdk.startSession(this.applicationContext)
     }
 }
